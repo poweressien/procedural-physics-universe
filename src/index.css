@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  /* Base surface */
+  --color-void: #05070b;
+  --color-abyss: #0a0e15;
+  --color-panel: #10151ee0;
+  --color-panel-border: #ffffff14;
+
+  /* Readout accent — cool instrument teal, not the generic acid-green/vermilion default */
+  --color-signal: #57d9c4;
+  --color-signal-dim: #57d9c466;
+
+  /* Secondary accent — warm heat/alert channel, used sparingly against the teal */
+  --color-heat: #e8a33d;
+  --color-hazard: #e8573d;
+
+  /* Text */
+  --color-ink: #e7edf3;
+  --color-ink-muted: #8b98aa;
+  --color-ink-faint: #556277;
+
+  --font-mono: ui-monospace, "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2.4s ease-in-out infinite;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background: var(--color-void);
+  color: var(--color-ink);
+  overscroll-behavior: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+canvas {
+  touch-action: none;
+  outline: none;
+}
+
+/* Thin scrollbars for readout panels */
+.readout-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.readout-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-panel-border);
+  border-radius: 3px;
+}
+
+.glass-panel {
+  background: var(--color-panel);
+  border: 1px solid var(--color-panel-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.data-label {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
